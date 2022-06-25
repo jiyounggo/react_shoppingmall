@@ -1,4 +1,4 @@
-import Navbars from "./components/nav.js";
+import Navbars from "./components/header.js";
 import Main from "./pages/main.js";
 
 function App() {
