@@ -2,29 +2,41 @@ import React from "react";
 import { useState, useEffect } from "react";
 import "../style/App.css";
 import Slider from "../components/slider.js";
-import Data from "../data/data.js";
+import Data from "../data/Data.js";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import { Alert } from "react-bootstrap";
+import { useNavigate, Route, Link, Routes, useParams } from "react-router-dom";
+import Detail from "../pages/Detail.js";
 
 function Main() {
   let [item, setitem] = useState(Data);
   let [버튼, 버튼변경] = useState(0);
+  const navigate = useNavigate();
+
   return (
     <div>
       <Slider />
       <div className="item">
         {item.map((a, i) => {
           return (
-            <div className="items" key={i}>
-              <Link to={`/detail/${a.id}`}>
-                <Card item={item[i]} i={i}></Card>
-              </Link>
+            <div
+              onClick={() =>
+                navigate(`/detail/${a.id}`, {
+                  state: {
+                    title: `${item[i].title}`,
+                    price: `${item[i].price}`,
+                    content: `${item[i].content}`,
+                    id: `${item[i].id}`,
+                  },
+                })
+              }
+              className="items"
+              key={i}
+            >
+              <Card item={item[i]} i={i}></Card>
             </div>
           );
         })}
       </div>
-
       <button
         className="addBt"
         onClick={() => {
