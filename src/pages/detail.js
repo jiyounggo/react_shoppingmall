@@ -5,33 +5,20 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { addCount, addItem } from "../reducer/store.js";
-import axios from "axios";
 
 function Detail(props) {
   const [Text, setText] = useState("");
-
   let state = useSelector((state) => {
     return state.cart;
   });
 
   let { id } = useParams();
   let [탭, 탭변경] = useState(0);
-  let [alerts, setAlert] = useState(true);
   const navigate = useNavigate();
   let dispatch = useDispatch();
 
-  // useEffect(()=>{
-  //   setTimeout(()=>{ setAlert(false) }, 2000)
-  // }, [])
   return (
     <div className="container">
-      {/* {
-        alerts== true
-        ? <div className="alert alert-warning">
-          로딩중
-          </div>
-        : null
-      } */}
       <div className="row">
         <div className="col-md-6">
           <img

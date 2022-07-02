@@ -1,12 +1,13 @@
 import Navbar from "./components/header.js";
 import Main from "./pages/Main.js";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Route, Routes } from "react-router-dom";
 import Detail from "./pages/Detail.js";
 import Find from "./components/find.js";
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import Data from "./data/Data.js";
+import Cart from "./pages/cart.js";
 
 function App() {
   let [items, setitems] = useState(Data);
@@ -70,6 +71,7 @@ function App() {
         <Route path="/" element={<Main items={items} />} />
         <Route path="/detail/:id" element={<Detail items={items} />} />
         <Route path="/find" element={<Find search={search} />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
