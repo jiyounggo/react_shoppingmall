@@ -9,6 +9,9 @@ import { useEffect, useState, useRef } from "react";
 import Data from "./data/Data.js";
 import Cart from "./pages/cart.js";
 
+import Login from "./components/User/Login.js";
+import Register from "./components/User/Register.js";
+
 function App() {
   let [items, setitems] = useState(Data);
   let [item] = useState(Data);
@@ -72,6 +75,8 @@ function App() {
         <Route path="/detail/:id" element={<Detail items={items} />} />
         <Route path="/find" element={<Find search={search} />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </div>
   );
