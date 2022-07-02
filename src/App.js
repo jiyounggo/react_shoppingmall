@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import Detail from "./pages/Detail.js";
 import Find from "./components/find.js";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Data from "./data/Data.js";
 
 function App() {
@@ -14,6 +14,12 @@ function App() {
   const navigate = useNavigate();
   let [search, setsearch] = useState([]);
   let [입력값, 입력값변경] = useState("");
+  const inputRef = useRef();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   useEffect(() => {
     axios
       .all([
@@ -26,7 +32,6 @@ function App() {
           const resr = res2.data;
           const res = [...item, ...rest, ...resr];
           setitems(res);
-          console.log(items);
         })
       );
   }, []);
@@ -55,7 +60,9 @@ function App() {
           onChange={(e) => {
             입력값변경(e.target.value);
           }}
+          ref={inputRef}
           value={입력값}
+          placeholder="검색하세용"
         ></input>
         <button onClick={() => {}}>댓글</button>
       </form>
