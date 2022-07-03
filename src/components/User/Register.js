@@ -1,5 +1,5 @@
+import { async } from "@firebase/util";
 import React, { useState } from "react";
-
 import { LoginDiv } from "../../style/UserCSS.js";
 import { useNavigate } from "react-router-dom";
 import firebase from "../../firebase.js";
@@ -15,6 +15,24 @@ function Register() {
 
   const RegisterFunction = async (e) => {
     // setFlag(true)
+    e.preventDefault();
+    if (!(Name && Email && PW && PWconfirm)) {
+      return alert("모든 값을 채워주세요");
+    }
+    if (PW != PWconfirm) {
+      return alert("비밀번호와 비밀번호 확인 값은 같아야합니다");
+    } else if (PWconfirm.length < 6 || PW.length < 6) {
+      return alert("비밀번호를 6글자 이상 입력해주세요!");
+    }
+    let createdUser = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(Email, PW);
+
+    await createdUser.user.updateProfile({
+      displayName: Name,
+    });
+    console.log(createdUser.user);
+    navigate("/login");
   };
   return (
     <LoginDiv>
