@@ -57,7 +57,6 @@ function Register() {
         <input
           type="password"
           value={PW}
-          minLength={8}
           onChange={(e) => {
             setPW(e.currentTarget.value);
           }}
@@ -66,7 +65,6 @@ function Register() {
         <input
           type="password"
           value={PWconfirm}
-          minLength={8}
           onChange={(e) => {
             setPWconfirm(e.currentTarget.value);
           }}

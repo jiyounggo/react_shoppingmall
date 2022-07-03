@@ -12,12 +12,35 @@ import Cart from "./pages/cart.js";
 import Login from "./components/User/Login.js";
 import Register from "./components/User/Register.js";
 
+import { loginUser, clearUser } from "./reducer/user.js";
+import { useSelector, useDispatch } from "react-redux";
+import firebase from "./firebase.js";
+
 function App() {
   let [items, setitems] = useState(Data);
   let [item] = useState(Data);
   const navigate = useNavigate();
   let [search, setsearch] = useState([]);
   let [입력값, 입력값변경] = useState("");
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userSlice);
+  console.log(user);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((userInfo) => {
+      if (userInfo !== null) {
+        //로그인이 되었을때
+        dispatch(loginUser(userInfo.multiFactor.user));
+      } else {
+        dispatch(clearUser());
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    // firebase.auth().signOut();
+  }, []);
+
   const inputRef = useRef();
 
   useEffect(() => {
