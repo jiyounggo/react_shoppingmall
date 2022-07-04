@@ -1,18 +1,9 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import firebase from "../firebase.js";
 
-import {
-  Navbar,
-  Nav,
-  Container,
-  Form,
-  Button,
-  NavDropdown,
-  Offcanvas,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
 function Header() {
@@ -45,12 +36,16 @@ function Header() {
               ) : (
                 <div onClick={() => LogoutHandler()}>Logout</div>
               )}
-              <NavDropdown title="Link" id="navbarScrollingDropdown">
-                <NavDropdown.Item>Action</NavDropdown.Item>
-                <NavDropdown.Item>Another action</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item>Something else here</NavDropdown.Item>
-              </NavDropdown>
+              <Link
+                to="/cart"
+                style={{
+                  color: "black",
+                  textDecoration: "none",
+                  marginLeft: "30px",
+                }}
+              >
+                Cart
+              </Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

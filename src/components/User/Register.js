@@ -9,8 +9,7 @@ function Register() {
   const [Email, setEmail] = useState("");
   const [PW, setPW] = useState("");
   const [PWconfirm, setPWconfirm] = useState("");
-  const [Flag, setFlag] = useState(false);
-
+  // const [Flag, setFlag] = useState(false);
   const navigate = useNavigate();
 
   const RegisterFunction = async (e) => {
@@ -31,9 +30,9 @@ function Register() {
     await createdUser.user.updateProfile({
       displayName: Name,
     });
-    console.log(createdUser.user);
     navigate("/login");
   };
+
   return (
     <LoginDiv>
       <form>
@@ -45,6 +44,7 @@ function Register() {
             setName(e.currentTarget.value);
           }}
         />
+
         <label>이메일</label>
         <input
           type="email"

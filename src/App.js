@@ -25,7 +25,6 @@ function App() {
 
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userSlice);
-  console.log(user);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
       if (userInfo !== null) {
@@ -35,10 +34,6 @@ function App() {
         dispatch(clearUser());
       }
     });
-  }, []);
-
-  useEffect(() => {
-    // firebase.auth().signOut();
   }, []);
 
   const inputRef = useRef();

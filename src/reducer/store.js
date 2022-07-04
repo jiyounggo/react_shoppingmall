@@ -17,15 +17,19 @@ let cart = createSlice({
         return a.id === action.payload;
       });
       state[번호].count++;
-      // state[action.payload].count++
     },
     addItem(state, action) {
       state.push(action.payload);
     },
+    deltetItem(state, action) {
+      let copy = [...state];
+      let 필터 = copy.filter((a) => a.id !== action.payload);
+      return 필터;
+    },
   },
 });
 
-export let { addCount, addItem } = cart.actions;
+export let { addCount, addItem, deltetItem } = cart.actions;
 
 let userSlice = createSlice({
   name: "userSlice",

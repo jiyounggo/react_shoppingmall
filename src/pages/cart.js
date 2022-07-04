@@ -1,7 +1,8 @@
 import { Table } from "react-bootstrap";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { addCount } from "../reducer/store.js";
+import { addCount, deltetItem } from "../reducer/store.js";
+import { useParams } from "react-router-dom";
 
 let Box = styled.div`
   color: grey;
@@ -12,6 +13,8 @@ let Box = styled.div`
 `;
 
 function Cart(props) {
+  let { id } = useParams();
+
   let state = useSelector((state) => {
     return state;
   });
@@ -24,7 +27,6 @@ function Cart(props) {
     (accu, cart) => accu + cart.price * cart.count,
     0
   );
-  console.log(total);
 
   return (
     <Box>
@@ -36,6 +38,7 @@ function Cart(props) {
             <th>판매가</th>
             <th>수량</th>
             <th>갯수</th>
+            <th>삭제</th>
           </tr>
         </thead>
         <tbody>
@@ -56,7 +59,13 @@ function Cart(props) {
                 </button>
               </td>
               <td>
-                <button onClick={() => {}}></button>
+                <button
+                  onClick={() => {
+                    dispatch(deltetItem(state.cart[i].id));
+                  }}
+                >
+                  X
+                </button>
               </td>
             </tr>
           ))}
