@@ -1,7 +1,7 @@
 import Navbar from "./components/header.js";
 import Main from "./pages/Main.js";
 import { useNavigate } from "react-router-dom";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import Detail from "./pages/Detail.js";
 import Find from "./components/find.js";
 import axios from "axios";
@@ -13,8 +13,10 @@ import Login from "./components/User/Login.js";
 import Register from "./components/User/Register.js";
 
 import { loginUser, clearUser } from "./reducer/user.js";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import firebase from "./firebase.js";
+
+import { WatchItem } from "./style/AppCSS.js";
 
 function App() {
   let [items, setitems] = useState(Data);
@@ -43,7 +45,8 @@ function App() {
   }, []);
 
   useEffect(() => {
-    setWatch(localStorage.getItem("watched"));
+    setWatch(JSON.parse(localStorage.getItem("watched")));
+    console.log(watchItem);
   }, []);
 
   useEffect(() => {
@@ -61,10 +64,35 @@ function App() {
         })
       );
   }, []);
+
   return (
     <div>
       <Navbar />
-      <div>{watchItem[2]}</div>
+      <WatchItem>
+        <p>최근 본 상품</p>
+        {watchItem &&
+          watchItem.map((item) => {
+            if (watchItem.length > 3) {
+              let copy = [...watchItem];
+              copy.shift();
+              setWatch(copy);
+            } else {
+              return (
+                <div>
+                  <Link to={"/detail/" + item}>
+                    <img
+                      src={
+                        "https://codingapple1.github.io/shop/shoes" +
+                        (Number(item) + 1) +
+                        ".jpg"
+                      }
+                    />
+                  </Link>
+                </div>
+              );
+            }
+          })}
+      </WatchItem>
       <form
         onSubmit={(e) => {
           e.preventDefault();

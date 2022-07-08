@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-// import "../style/App.css";
 import { Item, MoreBt, ItemIMG } from "../style/MainCSS.js";
 import Slider from "../components/slider.js";
 import Data from "../data/Data.js";
