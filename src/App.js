@@ -22,9 +22,9 @@ function App() {
   const navigate = useNavigate();
   let [search, setsearch] = useState([]);
   let [입력값, 입력값변경] = useState("");
-
+  let [watchItem, setWatch] = useState([]);
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userSlice);
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((userInfo) => {
       if (userInfo !== null) {
@@ -40,6 +40,10 @@ function App() {
 
   useEffect(() => {
     inputRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    setWatch(localStorage.getItem("watched"));
   }, []);
 
   useEffect(() => {
@@ -60,6 +64,7 @@ function App() {
   return (
     <div>
       <Navbar />
+      <div>{watchItem[2]}</div>
       <form
         onSubmit={(e) => {
           e.preventDefault();

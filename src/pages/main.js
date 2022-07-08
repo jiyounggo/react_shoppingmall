@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import "../style/App.css";
+// import "../style/App.css";
+import { Item, MoreBt, ItemIMG } from "../style/MainCSS.js";
 import Slider from "../components/slider.js";
 import Data from "../data/Data.js";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +15,9 @@ function Main() {
   return (
     <div>
       <Slider />
-      <div className="item">
+      <button>최신순</button>
+      <button>인기순</button>
+      <Item>
         {item.map((a, i) => {
           return (
             <div
@@ -28,22 +31,21 @@ function Main() {
                   },
                 })
               }
-              className="items"
+              id="items"
               key={i}
             >
               <Card item={item[i]} i={i}></Card>
             </div>
           );
         })}
-      </div>
-      <button
-        className="addBt"
+      </Item>
+      <MoreBt
         onClick={() => {
           버튼변경(버튼 + 1);
         }}
       >
         더보기
-      </button>
+      </MoreBt>
       <Button 버튼={버튼} item={item} setitem={setitem}></Button>
     </div>
   );
@@ -52,10 +54,9 @@ function Main() {
 function Card(props) {
   return (
     <div>
-      <img
-        className="itemIMG"
+      <ItemIMG
         src={process.env.PUBLIC_URL + "img/clothes" + props.i + ".png"}
-      ></img>
+      ></ItemIMG>
       <h4>{props.item.title}</h4>
       <p>{props.item.content}</p>
     </div>

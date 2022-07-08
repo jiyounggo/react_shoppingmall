@@ -2,7 +2,6 @@ import { Table } from "react-bootstrap";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { addCount, deltetItem } from "../reducer/store.js";
-import { useParams } from "react-router-dom";
 
 let Box = styled.div`
   color: grey;
@@ -12,9 +11,7 @@ let Box = styled.div`
   margin: 20px;
 `;
 
-function Cart(props) {
-  let { id } = useParams();
-
+function Cart() {
   let state = useSelector((state) => {
     return state;
   });

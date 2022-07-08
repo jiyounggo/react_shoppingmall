@@ -16,7 +16,27 @@ function Detail(props) {
   let [탭, 탭변경] = useState(0);
   const navigate = useNavigate();
   let dispatch = useDispatch();
-
+  let [watchItem, setWatch] = useState([]);
+  let 찾은상품 = props.items.find((x) => x.id == id);
+  console.log(찾은상품);
+  useEffect(() => {
+    let watch = localStorage.getItem("watched");
+    if (watch == null) {
+      watch = [];
+    } else {
+      watch = JSON.parse(watch);
+      console.log(watch.length);
+    }
+    watch.push(id);
+    if (watch.length >= 3) {
+      watch = new Set(watch);
+      watch = [...watch];
+      console.log(watch);
+    }
+    localStorage.setItem("watched", JSON.stringify(watch));
+    setWatch(watch);
+    console.log(watchItem);
+  }, []);
   return (
     <div className="container">
       <div className="row">
