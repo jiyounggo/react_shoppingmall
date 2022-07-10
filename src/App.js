@@ -78,13 +78,11 @@ function App() {
               setWatch(copy);
             } else {
               return (
-                <div>
+                <div id="img" key={item}>
                   <Link to={"/detail/" + item}>
                     <img
                       src={
-                        "https://codingapple1.github.io/shop/shoes" +
-                        (Number(item) + 1) +
-                        ".jpg"
+                        process.env.PUBLIC_URL + "img/clothes" + [item] + ".png"
                       }
                     />
                   </Link>

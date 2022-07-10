@@ -7,17 +7,21 @@ const WatchItem = styled.div`
   position: fixed;
   right: 0;
   top: 10;
-  width: 15%;
-  height: auto;
+  width: 10em;
+  height: 30em;
   background-color: beige;
   z-index: 2;
-  p {
-    margin-bottom: 0;
+  #img {
     text-align: center;
   }
+  p {
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+  }
   img {
-    max-width: 100%;
-    height: auto;
+    width: 9em;
+    height: 9em;
   }
 `;
 

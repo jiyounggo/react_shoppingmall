@@ -14,8 +14,7 @@ function Main() {
   return (
     <div>
       <Slider />
-      <button>최신순</button>
-      <button>인기순</button>
+
       <Item>
         {item.map((a, i) => {
           return (
@@ -45,7 +44,12 @@ function Main() {
       >
         더보기
       </MoreBt>
-      <Button 버튼={버튼} item={item} setitem={setitem}></Button>
+      <Button
+        버튼={버튼}
+        버튼변경={버튼변경}
+        item={item}
+        setitem={setitem}
+      ></Button>
     </div>
   );
 }

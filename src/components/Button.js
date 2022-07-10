@@ -3,6 +3,10 @@ import { useEffect } from "react";
 
 function BtClick(props) {
   useEffect(() => {
+    props.버튼변경(false);
+  }, [props.버튼 == 3]);
+
+  useEffect(() => {
     if (props.버튼 == 1) {
       axios
         .get("https://codingapple1.github.io/shop/data2.json")
