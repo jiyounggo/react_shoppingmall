@@ -6,11 +6,7 @@ import {
 
 let cart = createSlice({
   name: "cart",
-  initialState: [
-    { id: 11, name: "White and Black", price: 1000, count: 1 },
-    { id: 12, name: "Grey Yordan", price: 4000, count: 1 },
-    { id: 13, name: "oh my god", price: 2000, count: 1 },
-  ],
+  initialState: [],
   reducers: {
     addCount(state, action) {
       let 번호 = state.findIndex((a) => {

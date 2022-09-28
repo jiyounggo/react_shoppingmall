@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Nav } from "react-bootstrap";
-import swal from "sweetalert";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { addCount, addItem } from "../reducer/store.js";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Nav } from 'react-bootstrap';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCount, addItem } from '../reducer/store.js';
 
 function Detail(props) {
-  const [Text, setText] = useState("");
-  let state = useSelector((state) => {
+  const [Text, setText] = useState('');
+  let state = useSelector(state => {
     return state.cart;
   });
 
@@ -17,10 +17,9 @@ function Detail(props) {
   const navigate = useNavigate();
   let dispatch = useDispatch();
   let [watchItem, setWatch] = useState([]);
-  let 찾은상품 = props.items.find((x) => x.id == id);
-  console.log(찾은상품);
+
   useEffect(() => {
-    let watch = localStorage.getItem("watched");
+    let watch = localStorage.getItem('watched');
     if (watch == null) {
       watch = [];
     } else {
@@ -28,12 +27,13 @@ function Detail(props) {
       console.log(watch.length);
     }
     watch.push(id);
+
     if (watch.length >= 3) {
       watch = new Set(watch);
       watch = [...watch];
       console.log(watch);
     }
-    localStorage.setItem("watched", JSON.stringify(watch));
+    localStorage.setItem('watched', JSON.stringify(watch));
     setWatch(watch);
     console.log(watchItem);
   }, []);
@@ -41,22 +41,15 @@ function Detail(props) {
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <img
-            src={
-              process.env.PUBLIC_URL +
-              "/img/clothes" +
-              props.items[id].id +
-              ".png"
-            }
-          ></img>
+          <img src={process.env.PUBLIC_URL + '/img/clothes' + props.items[id]?.id + '.png'}></img>
         </div>
         <div className="col-md-6">
-          <h4 className="pt-5">{props.items[id].title}</h4>
-          <p>{props.items[id].content}</p>
-          <p>{props.items[id].price}</p>
+          <h4 className="pt-5">{props.items[id]?.title}</h4>
+          <p>{props.items[id]?.content}</p>
+          <p>{props.items[id]?.price}</p>
           <button
             onClick={() => {
-              let dupValue = state.findIndex((a) => {
+              let dupValue = state.findIndex(a => {
                 return a.id === props.items[id].id;
               });
               console.log(dupValue);
@@ -72,16 +65,16 @@ function Detail(props) {
                   )
                 : dispatch(addCount(props.items[id].id));
               swal({
-                title: "장바구니에 잘 담겼어요!",
-                icon: "success",
+                title: '장바구니에 잘 담겼어요!',
+                icon: 'success',
                 buttons: {
-                  showCart: { text: "장바구니 이동", value: "showCart" },
-                  cancel: "쇼핑 계속하기",
+                  showCart: { text: '장바구니 이동', value: 'showCart' },
+                  cancel: '쇼핑 계속하기',
                 },
-              }).then((value) => {
+              }).then(value => {
                 switch (value) {
-                  case "showCart":
-                    navigate("/cart");
+                  case 'showCart':
+                    navigate('/cart');
                     break;
                 }
               });
@@ -141,7 +134,7 @@ function Detail(props) {
   );
 }
 function Tabcontent(props) {
-  let [입력값, 입력값변경] = useState("");
+  let [입력값, 입력값변경] = useState('');
   let [글제목, 글제목변경] = useState([]);
 
   if (props.탭 == 0) {
@@ -154,19 +147,19 @@ function Tabcontent(props) {
     return (
       <div>
         <form
-          onSubmit={(e) => {
+          onSubmit={e => {
             e.preventDefault();
-            if (입력값 === "") {
-              alert("글자를 입력하세요");
+            if (입력값 === '') {
+              alert('글자를 입력하세요');
               return;
             } else {
               글제목변경([입력값, ...글제목]);
-              입력값변경("");
+              입력값변경('');
             }
           }}
         >
           <input
-            onChange={(e) => {
+            onChange={e => {
               입력값변경(e.target.value);
             }}
             value={입력값}

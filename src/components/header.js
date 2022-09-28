@@ -1,17 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import firebase from "../firebase.js";
-
-import { Navbar, Nav, Container } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import firebase from '../firebase.js';
+import SearchBar from './searchBar.jsx';
+import { Navbar, Nav, Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function Header() {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.userSlice);
+  const user = useSelector(state => state.userSlice);
   const LogoutHandler = () => {
     firebase.auth().signOut();
-    navigate("/");
+    navigate('/');
   };
   return (
     <>
@@ -22,13 +22,13 @@ function Header() {
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
               <Link to="/"> Home</Link>
-              {user.accessToken == "" ? (
+              {user.accessToken == '' ? (
                 <Link
                   to="/login"
                   style={{
-                    color: "black",
-                    textDecoration: "none",
-                    marginLeft: "30px",
+                    color: 'black',
+                    textDecoration: 'none',
+                    marginLeft: '30px',
                   }}
                 >
                   login
@@ -39,13 +39,14 @@ function Header() {
               <Link
                 to="/cart"
                 style={{
-                  color: "black",
-                  textDecoration: "none",
-                  marginLeft: "30px",
+                  color: 'black',
+                  textDecoration: 'none',
+                  marginLeft: '30px',
                 }}
               >
                 Cart
               </Link>
+              <SearchBar />
             </Nav>
           </Navbar.Collapse>
         </Container>
