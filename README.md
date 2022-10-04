@@ -35,6 +35,7 @@
 1. Carousel(슬라이드 배너), 동적 이미지와 선택지가 담긴 alert 
  https://jssq2468.tistory.com/102 (클릭시 기능별 포스팅 링크로 이동합니다)
 2. Firebase, Redux 를 이용한 로그인 구현(axios로 API 통신)
+<img width="315" alt="login" src="https://user-images.githubusercontent.com/103088450/193757578-c6ab82c8-0954-43d3-b75a-4dba5bcd3f01.png">
 
 
 
