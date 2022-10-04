@@ -1,47 +1,15 @@
-#  검색창 구현 + 검색어 추천 기능 구현
+#  미니 쇼핑몰
 
-## 과제 소개
+## 프로젝트 소개
 
-- 검색창 구현 + 검색어 추천 기능 구현
-- [API 소스코드](https://github.com/walking-sunset/assignment-api)
+- 리액트를 이용한 미니 쇼핑몰 기능 구현
 
-<br>
 
-## 데모 영상
-
-- https://drive.google.com/file/d/1QMFEOtELSsDNEFmnYnjJWz5N_RmMxFig/view?usp=sharing
-
-<br>
-
-## 목차
-
-- [실행 방법](#실행-방법)
-- [폴더 구조](#폴더-구조)
-- [프로젝트 기능 구현](#프로젝트-기능-구현)
-- [프로젝트 설명](#프로젝트-설명)
-
-<br>
-
-<br>
 
 ## 실행 방법
 
 ```
-/* step 1 */
 
- API 소스코드(서버파일)를 다운받는다.
-
-
-/* step 2 */
-
- 서버파일에서
- $ npm i
- $ npm start
-
-
-/* step 3 */
-
- 프로젝트 파일에서
  $ npm i
  $ npm start
 
@@ -49,10 +17,9 @@
 
 <br>
 
-## 폴더 구조
-
-<details><summary>폴더 구조
-</summary>
+## 프로젝트 소개
+$
+$
 
 ```
 📦src
