@@ -41,6 +41,6 @@
 
 <br>
 
-4. 장바구니 기능 구현
+3. 장바구니 기능 구현
 ![cart](https://user-images.githubusercontent.com/103088450/193758675-c222f047-0de9-4949-abc8-68f380ed286a.gif)
 
